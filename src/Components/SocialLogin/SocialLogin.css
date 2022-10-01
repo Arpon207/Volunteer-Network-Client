@@ -1,0 +1,19 @@
+.social-login {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-login-btn {
+  background-color: var(--bg);
+  display: flex;
+  font-size: 1.1em;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: white;
+  transition: var(--transition);
+}
+
+.social-login-btn:hover {
+  background-color: var(--bgs);
+}

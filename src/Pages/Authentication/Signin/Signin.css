@@ -1,0 +1,105 @@
+.signin-container .logo img {
+  height: 80px;
+}
+
+.signin-card h2 {
+  font-weight: 500;
+  text-align: left;
+}
+
+.signin-card > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signin-card {
+  border: 1px solid lightgray;
+  width: 25%;
+  margin: 5rem auto 0;
+  padding: 2rem;
+}
+
+.signin-card form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.signin-card form .input-wrapper {
+  width: 100%;
+}
+
+.signin-card form .input-wrapper input {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  border: none;
+  border-bottom: 1px solid lightgray;
+  outline: none;
+  transition: var(--transition);
+}
+
+.signin-card form input:focus {
+  border-bottom: 1px solid var(--bgs);
+}
+
+.signin-card form button {
+  padding: 1rem 0;
+  background-color: var(--bg);
+  color: white;
+  width: 100%;
+  transition: var(--transition);
+}
+
+.signin-card form button:hover {
+  background-color: var(--bgs);
+}
+
+.signin-card p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.signin-card p button {
+  color: var(--bg);
+  text-decoration: underline;
+  transition: var(--transition);
+}
+
+.signin-card p button:hover {
+  color: var(--bgs);
+}
+
+.error-message {
+  display: none;
+  text-align: left;
+  color: red;
+}
+
+.firebase-error {
+  color: red;
+  font-size: 0.8rem;
+}
+
+.signin-card form input:invalid[focus="true"] ~ .error-message {
+  display: block;
+  font-size: 0.8rem;
+}
+
+.signin-card form input:valid {
+  border-bottom: 1px solid goldenrod;
+}
+
+/*-----Media Queries for Small Devices----------*/
+
+/*--------Media Queries for Medium Devices -----------*/
+
+@media screen and (max-width: 1700px) {
+  .signin-card {
+    width: 30%;
+  }
+}

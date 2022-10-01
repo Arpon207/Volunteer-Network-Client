@@ -1,0 +1,26 @@
+.home {
+  margin-top: 3rem;
+  font-size: 1.7rem;
+}
+
+.search {
+  margin: 2rem auto;
+  width: 30%;
+  display: flex;
+}
+
+.search input {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 1rem;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.search button {
+  padding: 1.05rem;
+  color: white;
+  font-size: 1.1rem;
+  background: #1c6dd0;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
