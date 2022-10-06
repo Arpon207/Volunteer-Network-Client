@@ -1,0 +1,49 @@
+.add-event form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 3rem;
+}
+
+.add-event form .input-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.add-event form .input-wrapper input,
+.add-event form .input-wrapper textarea {
+  font-size: 0.9rem;
+  padding: 0.7rem;
+  outline: none;
+  border: 1px solid lightgray;
+  border-radius: 0.2rem;
+  resize: none;
+}
+
+#date {
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.add-event form .input-wrapper input:focus,
+.add-event form .input-wrapper textarea:focus {
+  outline: 1px solid var(--bg);
+}
+
+.add-event form .input-wrapper label {
+  text-align: left;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.rdrCalendarWrapper {
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  top: 5rem;
+  border: 1px solid lightgray;
+}
+
+.rdrMonth {
+  width: 100% !important;
+}

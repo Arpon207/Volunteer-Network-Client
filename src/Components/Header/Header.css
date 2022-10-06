@@ -1,9 +1,40 @@
+.header-container {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: -180px;
+  transition: 1s;
+  background-color: #fff;
+  z-index: 999;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 6rem;
 }
+
+/*--*/
+
+/* .brand {
+  transition: top 1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-0 {
+  top: 0;
+  position: relative;
+}
+
+.top-100 {
+  position: relative;
+  top: -200%;
+} */
+
+/*--*/
 
 .header-logo img {
   height: 3rem;
@@ -23,11 +54,11 @@ nav a {
 }
 
 nav a:hover {
-  color: #1c6dd0;
+  color: var(--bgs);
 }
 
 .active-link {
-  color: #1c6dd0;
+  color: var(--bg);
 }
 
 nav button {
@@ -35,7 +66,7 @@ nav button {
   letter-spacing: 1px;
   border-radius: 0.2rem;
   color: white;
-  background-color: #1c6dd0;
+  background-color: var(--bg);
 }
 
 .admin-btn {

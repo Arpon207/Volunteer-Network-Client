@@ -1,0 +1,86 @@
+.admin-header {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  padding: 1rem;
+  align-items: center;
+}
+
+.admin-header .logo img {
+  height: 4rem;
+}
+
+.admin-header h2 {
+  text-align: left;
+  font-weight: 500;
+}
+
+.admin-body {
+  display: grid;
+  grid-template-columns: 25% 75%;
+}
+
+.sidebar-buttons {
+  width: fit-content;
+  margin: 2rem auto 0;
+}
+
+.sidebar-buttons button {
+  text-align: left;
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.active-btn {
+  color: var(--bg);
+}
+
+.admin-main {
+  background-color: #f4f7fc;
+  padding: 2rem;
+  height: 85vh;
+}
+
+.volunteer-list {
+  display: none;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+  border-radius: 1rem;
+}
+
+.add-event {
+  display: none;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.active {
+  display: block;
+}
+
+.event-submit-btn {
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
+.event-submit-btn button {
+  font-size: 1rem;
+  color: white;
+  text-align: right;
+  background-color: var(--bg);
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5rem 2rem;
+  border-radius: 0.2rem;
+  transition: var(--transition);
+}
+
+.event-submit-btn button:hover {
+  background-color: var(--bgs);
+}
