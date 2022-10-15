@@ -1,0 +1,13 @@
+.delete {
+  display: grid;
+  place-items: center;
+}
+
+td button {
+  background-color: red;
+  display: grid;
+  place-items: center;
+  padding: 5px;
+  color: white;
+  border-radius: 50%;
+}

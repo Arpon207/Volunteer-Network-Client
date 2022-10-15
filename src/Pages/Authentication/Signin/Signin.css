@@ -1,5 +1,6 @@
 .signin-container .logo img {
   height: 80px;
+  cursor: pointer;
 }
 
 .signin-card h2 {

@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import logo from "../../../Images/logos/Group 1329.png";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../../Components/SocialLogin/SocialLogin";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { auth } from "../../../Firebase/firebase.init";
+import useToken from "./../../../Hooks/useToken";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -25,10 +26,16 @@ const Signup = () => {
     confirmPassword: false,
   });
 
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
   const [createWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
   const [updateProfile] = useUpdateProfile(auth);
+
+  const { token } = useToken(user);
 
   const nameRef = useRef();
   const emailRef = useRef();
@@ -72,93 +79,95 @@ const Signup = () => {
   }, [error]);
 
   useEffect(() => {
-    if (user) {
-      navigate("/");
+    if (token) {
+      navigate(from, { replace: true });
     }
-  }, [user]);
+  }, [token]);
 
   return (
-    <div className="signin">
-      <div className="signin-container">
-        <div className="logo">
-          <img src={logo} alt="" />
-        </div>
-        <div className="signin-card">
-          <div>
-            <h2>Sign up With</h2>
-            <SocialLogin />
+    <>
+      <div className="signin">
+        <div className="signin-container">
+          <div className="logo">
+            <img onClick={() => navigate("/")} src={logo} alt="" />
           </div>
-          <form onSubmit={handleSubmit}>
-            <div className="input-wrapper">
-              <input
-                ref={nameRef}
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Name"
-                pattern="^[A-Za-z0-9]{3,12}$"
-                onBlur={() => handleFocus("name")}
-                focus={focused.name.toString()}
-                required
-              />
-              <p className="error-message">{errorMessage.name}</p>
+          <div className="signin-card">
+            <div>
+              <h2>Sign up With</h2>
+              <SocialLogin />
             </div>
-            <div className="input-wrapper">
-              <input
-                ref={emailRef}
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Email"
-                pattern="[a-z0-9]+@gmail.com"
-                onBlur={() => handleFocus("email")}
-                focus={focused.email.toString()}
-                required
-              />
-              <p className="error-message">{errorMessage.email}</p>
-            </div>
-            <div className="input-wrapper">
-              <input
-                ref={passwordRef}
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Password"
-                pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
-                onBlur={() => handleFocus("password")}
-                focus={focused.password.toString()}
-                required
-              />
-              <p className="error-message">{errorMessage.password}</p>
-            </div>
-            <div className="input-wrapper">
-              <input
-                ref={confirmPasswordRef}
-                type="password"
-                name="confirmPassword"
-                id="confirmPassword"
-                placeholder="Confirm Password"
-                pattern={passwordRef?.current?.value}
-                onBlur={() => handleFocus("confirmPassword")}
-                focus={focused.confirmPassword.toString()}
-                required
-              />
-              <p className="error-message">{errorMessage.confirmPassword}</p>
-            </div>
-            {errorMessage.firebaseError && (
-              <p className="firebase-error">{errorMessage.firebaseError}</p>
-            )}
-            <button type="submit">Sign up</button>
-          </form>
-          <p>
-            Already have an account?{" "}
-            <button onClick={() => navigate("/signin")}>
-              Create an account.
-            </button>
-          </p>
+            <form onSubmit={handleSubmit}>
+              <div className="input-wrapper">
+                <input
+                  ref={nameRef}
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Name"
+                  pattern="^[A-Za-z0-9]{3,12}$"
+                  onBlur={() => handleFocus("name")}
+                  focus={focused.name.toString()}
+                  required
+                />
+                <p className="error-message">{errorMessage.name}</p>
+              </div>
+              <div className="input-wrapper">
+                <input
+                  ref={emailRef}
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email"
+                  pattern="[a-z0-9]+@gmail.com"
+                  onBlur={() => handleFocus("email")}
+                  focus={focused.email.toString()}
+                  required
+                />
+                <p className="error-message">{errorMessage.email}</p>
+              </div>
+              <div className="input-wrapper">
+                <input
+                  ref={passwordRef}
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                  onBlur={() => handleFocus("password")}
+                  focus={focused.password.toString()}
+                  required
+                />
+                <p className="error-message">{errorMessage.password}</p>
+              </div>
+              <div className="input-wrapper">
+                <input
+                  ref={confirmPasswordRef}
+                  type="password"
+                  name="confirmPassword"
+                  id="confirmPassword"
+                  placeholder="Confirm Password"
+                  pattern={passwordRef?.current?.value}
+                  onBlur={() => handleFocus("confirmPassword")}
+                  focus={focused.confirmPassword.toString()}
+                  required
+                />
+                <p className="error-message">{errorMessage.confirmPassword}</p>
+              </div>
+              {errorMessage.firebaseError && (
+                <p className="firebase-error">{errorMessage.firebaseError}</p>
+              )}
+              <button type="submit">Sign up</button>
+            </form>
+            <p>
+              Already have an account?{" "}
+              <button onClick={() => navigate("/signin")}>
+                Create an account.
+              </button>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

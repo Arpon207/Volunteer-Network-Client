@@ -4,9 +4,12 @@ import logo from "../../Images/logos/Group 1329.png";
 import { FiUsers } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
 import AddEvent from "./AddEvent/AddEvent";
+import VolunteerList from "./VolunteerList/VolunteerList";
+import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
   const [toggle, setToggle] = useState(1);
+  const navigate = useNavigate();
 
   const handleToggle = (index) => {
     setToggle(index);
@@ -16,7 +19,7 @@ const Admin = () => {
     <div className="admin">
       <div className="admin-header">
         <div className="logo">
-          <img src={logo} alt="" />
+          <img onClick={() => navigate("/")} src={logo} alt="" />
         </div>
         <h2>{toggle === 1 ? "Volunteer register list" : "Add event"}</h2>
       </div>
@@ -43,7 +46,7 @@ const Admin = () => {
               toggle === 1 ? "volunteer-list active" : "volunteer-list"
             }
           >
-            <h1>Volunteers</h1>
+            <VolunteerList />
           </div>
           <div className={toggle === 2 ? "add-event active " : "add-event"}>
             <AddEvent />

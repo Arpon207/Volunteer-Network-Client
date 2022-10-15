@@ -2,12 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Signin.css";
 import logo from "../../../Images/logos/Group 1329.png";
 import SocialLogin from "../../../Components/SocialLogin/SocialLogin";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { auth } from "../../../Firebase/firebase.init";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import useToken from "./../../../Hooks/useToken";
 
 const Signin = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [errorMessage, setErrorMessage] = useState({
     email: "Please Provide a valid emaiil",
     password:
@@ -21,6 +23,10 @@ const Signin = () => {
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+
+  const { token } = useToken(user);
+
+  const from = location?.state?.from?.pathname || "/";
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -49,11 +55,17 @@ const Signin = () => {
     }
   }, [error]);
 
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token]);
+
   return (
     <div className="signin">
       <div className="signin-container">
         <div className="logo">
-          <img src={logo} alt="" />
+          <img onClick={() => navigate("/")} src={logo} alt="" />
         </div>
         <div className="signin-card">
           <div>

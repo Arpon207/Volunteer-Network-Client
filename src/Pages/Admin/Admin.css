@@ -7,6 +7,7 @@
 
 .admin-header .logo img {
   height: 4rem;
+  cursor: pointer;
 }
 
 .admin-header h2 {

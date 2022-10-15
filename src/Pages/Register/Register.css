@@ -1,0 +1,94 @@
+.register {
+  margin-top: 2rem;
+}
+
+.register img {
+  height: 80px;
+  cursor: pointer;
+}
+
+.register-form {
+  border: 1px solid lightgray;
+  width: 40%;
+  margin: 2rem auto 0;
+  padding: 2rem;
+}
+
+.register-form form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.register-form form .input-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.register-form form .input-wrapper input {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  border: none;
+  border-bottom: 1px solid lightgray;
+  outline: none;
+  transition: var(--transition);
+}
+
+.register-form form input:focus {
+  border-bottom: 1px solid var(--bgs);
+}
+
+.register-form form > button {
+  padding: 1rem 0;
+  background-color: var(--bg);
+  color: white;
+  width: 100%;
+  transition: var(--transition);
+}
+
+.register-form form > button:hover {
+  background-color: var(--bgs);
+}
+
+.register-form p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.register-form p button {
+  color: var(--bg);
+  text-decoration: underline;
+  transition: var(--transition);
+}
+
+.register-form p button:hover {
+  color: var(--bgs);
+}
+
+.register-form select {
+  border: none;
+  border-bottom: 1px solid lightgray;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  outline: none;
+}
+
+.error-message {
+  display: none;
+  text-align: left;
+  color: red;
+}
+
+.register-form form input:invalid[focus="true"] ~ .error-message {
+  display: block;
+  font-size: 0.8rem;
+}
+
+.register-form form input:valid {
+  border-bottom: 1px solid goldenrod;
+}

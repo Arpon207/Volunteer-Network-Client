@@ -6,8 +6,11 @@ import { format } from "date-fns";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import axios from "axios";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../Firebase/firebase.init";
 
 const AddEvent = () => {
+  const [user] = useAuthState(auth);
   const [showCalendar, setShowCalendar] = useState(false);
   const [date, setDate] = useState(new Date());
 
@@ -25,8 +28,21 @@ const AddEvent = () => {
     const event = { eventTitle, eventDate, eventDesc, eventBannerUrl };
     if (eventTitle && eventDate && eventDesc && eventBannerUrl) {
       axios
-        .post("http://localhost:5000/volunteers", event)
-        .then((response) => console.log(response));
+        .post(
+          `https://volunteer-network207.herokuapp.com/events?email=${user?.email}`,
+          event,
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        )
+        .then((response) => {
+          if (response.status === 200) {
+            e.target.reset();
+            alert("Event added successfully.");
+          }
+        });
     }
   };
   return (

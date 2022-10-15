@@ -1,8 +1,40 @@
 .volunteers {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 5rem;
 }
 
 .volunteers div img {
   width: 100%;
+}
+
+.event {
+  border-radius: 0.7rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.event div {
+  background-color: var(--bg);
+  height: 5rem;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 0.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  z-index: 2;
+  transition: var(--transition);
+}
+
+.event h3 {
+  font-size: 1.4rem;
+  color: white;
+  font-weight: 500;
+}
+
+.event:hover.event div {
+  background-color: var(--bgs);
 }

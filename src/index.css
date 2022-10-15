@@ -7,7 +7,7 @@
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   cursor: pointer;
 }
 
@@ -17,7 +17,7 @@ button {
   cursor: pointer;
 }
 
-.container {
+.Container {
   width: 80%;
   margin: 0 auto;
 }
