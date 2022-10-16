@@ -13,7 +13,7 @@ import { auth } from "./../../Firebase/firebase.init";
 import axios from "axios";
 
 const Register = () => {
-  const { events } = useEvents();
+  const { events } = useEvents("");
   const [showCalendar, setShowCalendar] = useState(false);
   const [date, setDate] = useState(new Date());
   const [user] = useAuthState(auth);
